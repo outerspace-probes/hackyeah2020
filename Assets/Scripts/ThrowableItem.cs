@@ -39,7 +39,7 @@ public class ThrowableItem : MonoBehaviour
     {
         if (col.gameObject.tag == "DieCollider")
         {
-            Explode();
+            Destroy(gameObject);
         }
     }
 
