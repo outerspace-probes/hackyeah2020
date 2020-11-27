@@ -1,2 +1,2 @@
-# hackyeah2020
+# HackYeah2020
 gamejam
