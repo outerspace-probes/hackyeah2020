@@ -1,7 +1,43 @@
 fileFormatVersion: 2
-guid: b7714e3ec451bab4b93c91589af2b297
+guid: 2e5f9de4aac13014097db18343e4f064
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 899166260773088703
+    second: pipo-nekonin001_a_0
+  - first:
+      213: -6505850470597740363
+    second: idle
+  - first:
+      213: 7695236948865660934
+    second: pipo-nekonin001_a_2
+  - first:
+      213: 1020901536913063200
+    second: walk1
+  - first:
+      213: 2855674747257709089
+    second: walk2
+  - first:
+      213: 6924671226882298556
+    second: walk3
+  - first:
+      213: 4619515457880807301
+    second: pipo-nekonin001_a_6
+  - first:
+      213: -6308412827581693240
+    second: pipo-nekonin001_a_7
+  - first:
+      213: -6670476738974128399
+    second: pipo-nekonin001_a_8
+  - first:
+      213: -4590197023843656069
+    second: pipo-nekonin001_a_9
+  - first:
+      213: -4140347901724918564
+    second: pipo-nekonin001_a_10
+  - first:
+      213: 1860498817242497360
+    second: pipo-nekonin001_a_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +77,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 9
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,7 +147,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: idle
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b8b63a677396b5a0800000000000000
+      internalID: -6505850470597740363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d7a52f988fa2e00800000000000000
+      internalID: 1020901536913063200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12269587d0561a720800000000000000
+      internalID: 2855674747257709089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb210b8dacf591060800000000000000
+      internalID: 6924671226882298556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

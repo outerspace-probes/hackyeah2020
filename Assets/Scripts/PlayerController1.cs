@@ -28,6 +28,7 @@ public class PlayerController1 : MonoBehaviour
 
     private enum State { idle, run }
     [SerializeField] private State state = State.idle;
+    public bool isActiveGame = true;
 
     private Vector3 initPos;
     private GameObject throwObjHandler;
@@ -35,7 +36,7 @@ public class PlayerController1 : MonoBehaviour
     private ThrowableItem throwableItemHandler;
     private bool isLeftDir = false;
     private float maxBallPower;
-    private bool isActiveGame = true;
+    
 
     private void Awake()
     {
@@ -139,7 +140,7 @@ public class PlayerController1 : MonoBehaviour
         if(lives <= 0) { ProcessDie(); }
         else
         {
-            UpdateLives(lives - 1);
+            if(isActiveGame) { UpdateLives(lives - 1); }
         }
     }
 
@@ -148,12 +149,12 @@ public class PlayerController1 : MonoBehaviour
         spriteObj.SetActive(false);
         isActiveGame = false;
         rb.simulated = false;
-        Invoke("RestartGame", 1f);
+        Invoke("ProcessGameOver", 1f);
     }
 
-    private void RestartGame()
+    private void ProcessGameOver()
     {
-        SceneManager.LoadScene("GameScene");
+        GameManager.instance.ProcessGameOver();
     }
 
     private bool IsGrounded()
