@@ -24,5 +24,6 @@ public class FallingObstacle : MonoBehaviour
     {
         exploHandler = Instantiate(exploPrefab, exploPos, Quaternion.identity);
         exploHandler.transform.parent = spawnedExploParent.transform;
+        Destroy(exploHandler, 2f);
     }
 }

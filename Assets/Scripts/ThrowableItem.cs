@@ -37,9 +37,21 @@ public class ThrowableItem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "DieCollider")
+        if (col.gameObject.CompareTag("DieCollider"))
         {
             Destroy(gameObject);
+        }
+        if (col.gameObject.CompareTag("DestructableItem"))
+        {
+            Explode();
+        }
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.CompareTag("KillingObstacle"))
+        {
+            Explode();
         }
     }
 
