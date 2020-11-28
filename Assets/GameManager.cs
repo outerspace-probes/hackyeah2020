@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public void ProcessWin()
     {
         player.isActiveGame = false;
+        player.StopMove();
         Invoke("ShowCongrats", 3f);
     }
   

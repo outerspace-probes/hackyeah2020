@@ -7,6 +7,7 @@ public class WallCrack : MonoBehaviour
     [SerializeField] GameObject initSprite = default;
     [SerializeField] GameObject damagedSprite = default;
     [SerializeField] DestructableWall parentWall = default;
+    // [SerializeField] BoxCollider2D coll = default;
 
     public bool isDamaged = false;
 
@@ -17,6 +18,7 @@ public class WallCrack : MonoBehaviour
             initSprite.SetActive(false);
             damagedSprite.SetActive(true);
             isDamaged = true;
+
             parentWall.ProcessCrackHit();
         }
     }

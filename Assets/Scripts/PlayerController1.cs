@@ -26,6 +26,12 @@ public class PlayerController1 : MonoBehaviour
     [SerializeField] GameObject spriteObj = default;
     [SerializeField] GameObject spawnedObjsParent = default;
 
+    public void StopMove()
+    {
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        state = State.idle;
+    }
+
     private enum State { idle, run }
     [SerializeField] private State state = State.idle;
     public bool isActiveGame = true;

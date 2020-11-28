@@ -31,7 +31,7 @@ public class AnimalController : MonoBehaviour
     public void StartWalk()
     {
         state = State.run;
-        animator.SetInteger("state", (int)state);
+        animator?.SetInteger("state", (int)state);
         Invoke("SelfDestruct", 9f);
     }
 

@@ -213,6 +213,7 @@ MonoBehaviour:
   initSprite: {fileID: 8026395356251170563}
   damagedSprite: {fileID: 8026395357601495622}
   parentWall: {fileID: 0}
+  coll: {fileID: 8026395357705942399}
   isDamaged: 0
 --- !u!61 &8026395357705942399
 BoxCollider2D:
