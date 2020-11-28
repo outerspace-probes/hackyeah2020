@@ -11,7 +11,7 @@ public class PlayerController1 : MonoBehaviour
     [SerializeField] int lives = 3;
     [SerializeField] float throwBallPower = 100f;
     [SerializeField] float throwPowerCost = 30f;
-    [SerializeField] float throwPowerRegenerationSpeed = 150f;
+    [SerializeField] float throwPowerRegenerationSpeed = 40f;
     [SerializeField] Text UILivesField = default; 
     [SerializeField] RectTransform UIballPowerBar = default; 
 
@@ -22,7 +22,8 @@ public class PlayerController1 : MonoBehaviour
     [SerializeField] Animator animator = default;
     [SerializeField] Collider2D coll = default;
     [SerializeField] Transform throwSpawnPoint = default;
-    [SerializeField] GameObject onionWeaponPrefab = default;
+    [SerializeField] GameObject throwWeaponPrefab = default;
+    [SerializeField] GameObject spriteObj = default;
     [SerializeField] GameObject spawnedObjsParent = default;
 
     private enum State { idle, run }
@@ -34,6 +35,7 @@ public class PlayerController1 : MonoBehaviour
     private ThrowableItem throwableItemHandler;
     private bool isLeftDir = false;
     private float maxBallPower;
+    private bool isActiveGame = true;
 
     private void Awake()
     {
@@ -48,6 +50,13 @@ public class PlayerController1 : MonoBehaviour
         ProcessInput();
         animator.SetInteger("state", (int)state);
         RegenerateBallPower();
+        UpdateLives(lives);
+    }
+
+    private void UpdateLives(int newLives)
+    {
+        lives = newLives;
+        UILivesField.text = Mathf.Clamp(lives, 0, 999).ToString();
     }
 
     private void UpdateBallPower(float power)
@@ -63,6 +72,8 @@ public class PlayerController1 : MonoBehaviour
 
     private void ProcessInput()
     {
+        if(!isActiveGame) { return; }
+
         float hDirection = Input.GetAxis("Horizontal");
 
         if (hDirection < 0) // move left
@@ -97,7 +108,7 @@ public class PlayerController1 : MonoBehaviour
     {
         if(throwBallPower < throwPowerCost) { return; }
 
-        throwObjHandler = Instantiate(onionWeaponPrefab, throwSpawnPoint.position, Quaternion.identity);
+        throwObjHandler = Instantiate(throwWeaponPrefab, throwSpawnPoint.position, Quaternion.identity);
         throwObjHandler.transform.parent = spawnedObjsParent.transform;
         throwableItemHandler = throwObjHandler.GetComponent<ThrowableItem>();
         throwRbHandler = throwableItemHandler.rb;
@@ -113,6 +124,36 @@ public class PlayerController1 : MonoBehaviour
         }
         throwRbHandler.velocity = velocity;
         UpdateBallPower(throwBallPower -= throwPowerCost);
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.CompareTag("KillingObstacle"))
+        {
+            ProcessHit();
+        }
+    }
+
+    private void ProcessHit()
+    {
+        if(lives <= 0) { ProcessDie(); }
+        else
+        {
+            UpdateLives(lives - 1);
+        }
+    }
+
+    private void ProcessDie()
+    {
+        spriteObj.SetActive(false);
+        isActiveGame = false;
+        rb.simulated = false;
+        Invoke("RestartGame", 1f);
+    }
+
+    private void RestartGame()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 
     private bool IsGrounded()
