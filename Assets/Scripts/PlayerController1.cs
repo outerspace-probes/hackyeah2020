@@ -1,10 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerController1 : MonoBehaviour
 {
+
+    [SerializeField] int lives = 3;
+    [SerializeField] float throwBallPower = 100f;
+    [SerializeField] float throwPowerCost = 30f;
+    [SerializeField] float throwPowerRegenerationSpeed = 150f;
+    [SerializeField] Text UILivesField = default; 
+    [SerializeField] RectTransform UIballPowerBar = default; 
+
     [SerializeField] [Range(2f, 20f)]  float movingSpeed = 5f;
 
     [SerializeField] LayerMask groundLayer = default;
@@ -22,19 +32,33 @@ public class PlayerController1 : MonoBehaviour
     private GameObject throwObjHandler;
     private Rigidbody2D throwRbHandler;
     private ThrowableItem throwableItemHandler;
-    [SerializeField] private bool isLeftDir = false;
+    private bool isLeftDir = false;
+    private float maxBallPower;
 
     private void Awake()
     {
         Application.targetFrameRate = 60;
 
         initPos = transform.position;
+        maxBallPower = throwBallPower;
     }
 
     private void Update()
     {
         ProcessInput();
         animator.SetInteger("state", (int)state);
+        RegenerateBallPower();
+    }
+
+    private void UpdateBallPower(float power)
+    {
+        throwBallPower = Mathf.Clamp(power, 0, maxBallPower);
+        UIballPowerBar.localScale = new Vector3(throwBallPower / maxBallPower, 1f, 1f);
+    }
+
+    private void RegenerateBallPower()
+    {
+        UpdateBallPower(throwBallPower + (throwPowerRegenerationSpeed * Time.deltaTime));
     }
 
     private void ProcessInput()
@@ -71,6 +95,8 @@ public class PlayerController1 : MonoBehaviour
 
     public void Throw()
     {
+        if(throwBallPower < throwPowerCost) { return; }
+
         throwObjHandler = Instantiate(onionWeaponPrefab, throwSpawnPoint.position, Quaternion.identity);
         throwObjHandler.transform.parent = spawnedObjsParent.transform;
         throwableItemHandler = throwObjHandler.GetComponent<ThrowableItem>();
@@ -86,6 +112,7 @@ public class PlayerController1 : MonoBehaviour
             velocity = new Vector2(throwableItemHandler.initialSpeed, -throwableItemHandler.initialSpeed);
         }
         throwRbHandler.velocity = velocity;
+        UpdateBallPower(throwBallPower -= throwPowerCost);
     }
 
     private bool IsGrounded()
