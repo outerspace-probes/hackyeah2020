@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         player.isActiveGame = false;
         player.StopMove();
-        Invoke("ShowCongrats", 3f);
+        Invoke("ShowCongrats", 8f);
     }
   
     private void ShowCongrats()
