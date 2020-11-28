@@ -16,6 +16,7 @@ public class WallCrack : MonoBehaviour
         {
             initSprite.SetActive(false);
             damagedSprite.SetActive(true);
+            isDamaged = true;
             parentWall.ProcessCrackHit();
         }
     }
