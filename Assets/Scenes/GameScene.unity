@@ -10351,10 +10351,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerController1
       objectReference: {fileID: 0}
-    - target: {fileID: 5485995130869966599, guid: 6f5791231b6e76e4cbcd75e76f43aec2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5485995130869966616, guid: 6f5791231b6e76e4cbcd75e76f43aec2, type: 3}
       propertyPath: UILivesField
       value: 
@@ -10367,10 +10363,6 @@ PrefabInstance:
       propertyPath: spawnedObjsParent
       value: 
       objectReference: {fileID: 1804702634}
-    - target: {fileID: 5485995130869966616, guid: 6f5791231b6e76e4cbcd75e76f43aec2, type: 3}
-      propertyPath: lives
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f5791231b6e76e4cbcd75e76f43aec2, type: 3}
 --- !u!1 &513792638

@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2425ff41807552740a8204dddafeb596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
+  lives: 9
   throwBallPower: 100
   throwPowerCost: 30
   throwPowerRegenerationSpeed: 30
@@ -95,6 +95,7 @@ MonoBehaviour:
   spriteObj: {fileID: 5485995131034104400}
   spawnedObjsParent: {fileID: 0}
   state: 0
+  isActiveGame: 1
 --- !u!50 &5485995130869966618
 Rigidbody2D:
   serializedVersion: 4
